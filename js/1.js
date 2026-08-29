@@ -1,28 +1,31 @@
 "use strict";
 
 /*
- * У Sunny Coffee вартість доставки залежить від суми замовлення.
- * 1. Оголоси функцію getDeliveryPrice з параметром orderSum.
- * 2. За допомогою if...else if...else поверни з функції вартість доставки:
- *    - якщо orderSum не менше 500 — доставка безкоштовна, поверни 0;
- *    - якщо orderSum не менше 200 — поверни 30;
- *    - інакше — поверни 50.
+ * Функція перевіряє пароль користувача й повідомляє про результат.
+ * Правильний пароль уже збережено у змінній correctPassword.
+ * 1. Оголоси функцію checkPassword з параметром password.
+ * 2. За допомогою тернарного оператора поверни з функції:
+ *    - "Access granted", якщо password збігається з correctPassword;
+ *    - "Access denied, wrong password!" — в іншому випадку.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
+const correctPassword = "jqueryismyjam";
+
 // Твій код тут
 
-function getDeliveryPrice(orderSum) {
-  if (orderSum >= 500) {
-    return 0;
-    return getDeliveryPrice;
-  } else if (orderSum >= 200) {
-    return 30;
-  } else {
-    return 50;
-  }
+/*function checkPassword(password) {
+  return correctPassword === password
+    ? "Access granted"
+    : "Access denied, wrong password!";
 }
+*/
 
-console.log(getDeliveryPrice(600)); // 0
-console.log(getDeliveryPrice(300)); // 30
-console.log(getDeliveryPrice(150)); // 50
+const checkPassword = (password) =>
+  correctPassword === password
+    ? "Access granted"
+    : "Access denied, wrong password!";
+
+console.log(checkPassword("jqueryismyjam")); // Access granted
+console.log(checkPassword("angul4r1sl1f3")); // Access denied, wrong password!
+console.log(checkPassword("r3actsux")); // Access denied, wrong password!
