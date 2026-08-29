@@ -1,21 +1,30 @@
 "use strict";
 
 /*
- * У клініці SmileCare пацієнтів ділять на дорослих і дитячих за віком.
- * 1. Оголоси змінну age зі значенням віку пацієнта 25.
- * 2. Оголоси змінну category.
- * 3. За допомогою if...else перевір: якщо age >= 18,
- *    признач category значення "adult", інакше — "child".
- * 4. Виведи category у консоль.
+ * Магазину потрібно перевіряти замовлення перед оформленням.
+ * Є два значення: скільки товару доступно на складі й скільки замовлено.
+ * 1. Оголоси змінну available зі значенням 100 (доступно на складі).
+ * 2. Оголоси змінну ordered зі значенням 130 (кількість у замовленні).
+ * 3. Оголоси змінну message.
+ * 4. За допомогою if...else if...else признач message:
+ *    - якщо ordered дорівнює 0 — "There are no products in the order!";
+ *    - якщо ordered більше за available —
+ *      "Your order is too large, there are not enough items in stock!";
+ *    - інакше — "The order is accepted, our manager will contact you".
+ * 5. Виведи message у консоль.
  */
 
 // Твій код тут
-const age = 25;
-let category;
-if (age >= 18) {
-  category = "adult";
+const available = 100;
+const ordered = 130;
+let message;
+
+if (ordered === 0) {
+  message = "There are no products in the order!";
+} else if (ordered > available) {
+  message = "Your order is too large, there are not enough items in stock!";
 } else {
-  category = "child";
+  message = "The order is accepted, our manager will contact you";
 }
 
-console.log(category);
+console.log(message);
