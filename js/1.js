@@ -10,3 +10,12 @@
  */
 
 // Твій код тут
+const age = 25;
+let category;
+if (age >= 18) {
+  category = "adult";
+} else {
+  category = "child";
+}
+
+console.log(category);
