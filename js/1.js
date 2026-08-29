@@ -1,31 +1,32 @@
 "use strict";
 
 /*
- * Функція перевіряє пароль користувача й повідомляє про результат.
- * Правильний пароль уже збережено у змінній correctPassword.
- * 1. Оголоси функцію checkPassword з параметром password.
- * 2. За допомогою тернарного оператора поверни з функції:
- *    - "Access granted", якщо password збігається з correctPassword;
- *    - "Access denied, wrong password!" — в іншому випадку.
+ * Сервіс має три типи передплати, у кожного своя ціна в кредитах.
+ * 1. Оголоси функцію getSubscriptionPrice з параметром type.
+ * 2. За допомогою switch поверни з функції ціну залежно від type:
+ *    - "starter" — 0;
+ *    - "professional" — 20;
+ *    - "organization" — 50;
+ *    - будь-яке інше значення — "Invalid subscription type!".
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
-const correctPassword = "jqueryismyjam";
-
 // Твій код тут
 
-/*function checkPassword(password) {
-  return correctPassword === password
-    ? "Access granted"
-    : "Access denied, wrong password!";
+function getSubscriptionPrice(type) {
+  switch (type) {
+    case "starter":
+      return 0;
+    case "professional":
+      return 20;
+    case "organization":
+      return 50;
+    default:
+      return "Invalid subscription type!";
+  }
 }
-*/
 
-const checkPassword = (password) =>
-  correctPassword === password
-    ? "Access granted"
-    : "Access denied, wrong password!";
-
-console.log(checkPassword("jqueryismyjam")); // Access granted
-console.log(checkPassword("angul4r1sl1f3")); // Access denied, wrong password!
-console.log(checkPassword("r3actsux")); // Access denied, wrong password!
+console.log(getSubscriptionPrice("starter")); // 0
+console.log(getSubscriptionPrice("professional")); // 20
+console.log(getSubscriptionPrice("organization")); // 50
+console.log(getSubscriptionPrice("premium")); // Invalid subscription type!
