@@ -1,30 +1,28 @@
 "use strict";
 
 /*
- * Магазину потрібно перевіряти замовлення перед оформленням.
- * Є два значення: скільки товару доступно на складі й скільки замовлено.
- * 1. Оголоси змінну available зі значенням 100 (доступно на складі).
- * 2. Оголоси змінну ordered зі значенням 130 (кількість у замовленні).
- * 3. Оголоси змінну message.
- * 4. За допомогою if...else if...else признач message:
- *    - якщо ordered дорівнює 0 — "There are no products in the order!";
- *    - якщо ordered більше за available —
- *      "Your order is too large, there are not enough items in stock!";
- *    - інакше — "The order is accepted, our manager will contact you".
- * 5. Виведи message у консоль.
+ * У Sunny Coffee вартість доставки залежить від суми замовлення.
+ * 1. Оголоси функцію getDeliveryPrice з параметром orderSum.
+ * 2. За допомогою if...else if...else поверни з функції вартість доставки:
+ *    - якщо orderSum не менше 500 — доставка безкоштовна, поверни 0;
+ *    - якщо orderSum не менше 200 — поверни 30;
+ *    - інакше — поверни 50.
+ * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
-const available = 100;
-const ordered = 130;
-let message;
 
-if (ordered === 0) {
-  message = "There are no products in the order!";
-} else if (ordered > available) {
-  message = "Your order is too large, there are not enough items in stock!";
-} else {
-  message = "The order is accepted, our manager will contact you";
+function getDeliveryPrice(orderSum) {
+  if (orderSum >= 500) {
+    return 0;
+    return getDeliveryPrice;
+  } else if (orderSum >= 200) {
+    return 30;
+  } else {
+    return 50;
+  }
 }
 
-console.log(message);
+console.log(getDeliveryPrice(600)); // 0
+console.log(getDeliveryPrice(300)); // 30
+console.log(getDeliveryPrice(150)); // 50
