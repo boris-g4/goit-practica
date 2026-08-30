@@ -1,25 +1,26 @@
 "use strict";
 
 /*
- * У клініці SmileCare огляд безкоштовний для дітей і пенсіонерів.
- * 1. Оголоси функцію getCheckupPrice з параметром age (вік пацієнта).
- * 2. За допомогою if...else поверни вартість огляду:
- *    - якщо вік менший за 18 АБО більший за 65 — огляд безкоштовний, поверни 0;
- *    - інакше — поверни 300.
- *    Обидві умови поєднай через ||.
+ * У Sunny Coffee пропозиція «Замовити ще» показується, лише коли
+ * кав'ярня відкрита і це не перше замовлення клієнта.
+ * 1. Оголоси функцію getReorderMessage з двома параметрами:
+ *    isOpen (чи відкрита кав'ярня) і isFirstOrder (чи перше замовлення).
+ * 2. За допомогою if...else поверни повідомлення:
+ *    - якщо кав'ярня відкрита І замовлення НЕ перше — поверни "Order again?";
+ *    - інакше — поверни "No offer".
+ *    Для умови «не перше» використай оператор !.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
-
-function getCheckupPrice(age) {
-  if (age < 18 || age > 65) {
-    return 0;
+function getReorderMessage(isOpen, isFirstOrder) {
+  if (isOpen && !isFirstOrder) {
+    return "Order again?";
   } else {
-    return 300;
+    return "No offer";
   }
 }
 
-console.log(getCheckupPrice(12)); // 0
-console.log(getCheckupPrice(70)); // 0
-console.log(getCheckupPrice(35)); // 300
+console.log(getReorderMessage(true, false)); // Order again?
+console.log(getReorderMessage(true, true)); // No offer
+console.log(getReorderMessage(false, false)); // No offer
