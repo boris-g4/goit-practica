@@ -1,23 +1,24 @@
 "use strict";
 
 /*
- * Функція приводить рядок до потрібного регістру.
- * 1. Оголоси функцію normalizeInput з двома параметрами:
- *    input (рядок для перетворення) і to (режим: "upper" або "lower").
- * 2. Поверни з функції:
- *    - якщо to дорівнює "upper" — рядок input у верхньому регістрі;
- *    - інакше — рядок input у нижньому регістрі.
+ * Функція перевіряє, чи міститься ім'я в повному імені.
+ * Регістр введених рядків наперед не відомий, тому порівнювати
+ * потрібно без огляду на регістр.
+ * 1. Оголоси функцію containsName з двома параметрами:
+ *    fullName (повне ім'я) і firstName (ім'я для пошуку).
+ * 2. Зведи обидва рядки до нижнього регістру через toLowerCase().
+ * 3. Поверни результат перевірки: чи містить fullName підрядок firstName
+ *    (використай includes()).
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
-function normalizeInput(input, to) {
-  if (to === "upper") {
-    return input.toUpperCase();
-  }
-  return input.toLowerCase();
-}
 
-console.log(normalizeInput("Big SALE", "lower")); // big sale
-console.log(normalizeInput("Big SALE", "upper")); // BIG SALE
-console.log(normalizeInput("Hello World", "upper")); // HELLO WORLD
+function containsName(fullName, firstName) {
+  const fullNameLowerCase = fullName.toLowerCase();
+  const firstNameLowerCase = firstName.toLowerCase();
+  return fullNameLowerCase.includes(firstNameLowerCase);
+}
+console.log(containsName("Jason Neis", "Jason")); // true
+console.log(containsName("Jason Neis", "jAsOn")); // true
+console.log(containsName("Jason Neis", "Jacob")); // false
