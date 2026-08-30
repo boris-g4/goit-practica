@@ -1,32 +1,27 @@
 "use strict";
 
 /*
- * Сервіс має три типи передплати, у кожного своя ціна в кредитах.
- * 1. Оголоси функцію getSubscriptionPrice з параметром type.
- * 2. За допомогою switch поверни з функції ціну залежно від type:
- *    - "starter" — 0;
- *    - "professional" — 20;
- *    - "organization" — 50;
- *    - будь-яке інше значення — "Invalid subscription type!".
+ * У Sunny Coffee безкоштовна доставка лише для постійних клієнтів
+ * з великим замовленням.
+ * 1. Оголоси функцію getDeliveryPrice з двома параметрами:
+ *    isMember (чи постійний клієнт) і orderSum (сума замовлення).
+ * 2. За допомогою if...else поверни вартість доставки:
+ *    - якщо клієнт постійний І сума замовлення не менша за 500 —
+ *      доставка безкоштовна, поверни 0;
+ *    - інакше — поверни 30.
+ *    Обидві умови поєднай через &&.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
-
-function getSubscriptionPrice(type) {
-  switch (type) {
-    case "starter":
-      return 0;
-    case "professional":
-      return 20;
-    case "organization":
-      return 50;
-    default:
-      return "Invalid subscription type!";
+function getDeliveryPrice(isMember, orderSum) {
+  if (isMember && orderSum >= 500) {
+    return 0;
+  } else {
+    return 30;
   }
 }
 
-console.log(getSubscriptionPrice("starter")); // 0
-console.log(getSubscriptionPrice("professional")); // 20
-console.log(getSubscriptionPrice("organization")); // 50
-console.log(getSubscriptionPrice("premium")); // Invalid subscription type!
+console.log(getDeliveryPrice(true, 600)); // 0
+console.log(getDeliveryPrice(true, 300)); // 30
+console.log(getDeliveryPrice(false, 600)); // 30
