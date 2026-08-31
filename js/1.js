@@ -1,24 +1,27 @@
 "use strict";
 
 /*
- * Функція перевіряє, чи міститься ім'я в повному імені.
- * Регістр введених рядків наперед не відомий, тому порівнювати
- * потрібно без огляду на регістр.
- * 1. Оголоси функцію containsName з двома параметрами:
- *    fullName (повне ім'я) і firstName (ім'я для пошуку).
- * 2. Зведи обидва рядки до нижнього регістру через toLowerCase().
- * 3. Поверни результат перевірки: чи містить fullName підрядок firstName
- *    (використай includes()).
+ * Функція перевіряє, чи має файл потрібне розширення.
+ * 1. Оголоси функцію checkFileExtension з двома параметрами:
+ *    fileName (ім'я файлу з розширенням) і extension (розширення для перевірки).
+ * 2. За допомогою if...else поверни повідомлення:
+ *    - якщо fileName закінчується на extension — "File extension matches";
+ *    - інакше — "File extension does not match".
+ *    Для перевірки закінчення використай endsWith().
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
 
-function containsName(fullName, firstName) {
-  const fullNameLowerCase = fullName.toLowerCase();
-  const firstNameLowerCase = firstName.toLowerCase();
-  return fullNameLowerCase.includes(firstNameLowerCase);
+function checkFileExtension(fileName, extension) {
+  const fileNameLowCase = fileName.toLowerCase();
+  const extensionLowCase = extension.toLowerCase();
+  if (fileNameLowCase.endsWith(extensionLowCase)) {
+    return "File extension matches";
+  }
+  return "File extension does not match";
 }
-console.log(containsName("Jason Neis", "Jason")); // true
-console.log(containsName("Jason Neis", "jAsOn")); // true
-console.log(containsName("Jason Neis", "Jacob")); // false
+
+console.log(checkFileExtension("styles.css", ".css")); // File extension matches
+console.log(checkFileExtension("styles.css", ".js")); // File extension does not match
+console.log(checkFileExtension("app.js", ".js")); // File extension matches
