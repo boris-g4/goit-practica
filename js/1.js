@@ -1,26 +1,30 @@
 "use strict";
 
 /*
- * У програмі лояльності Sunny Coffee за 1-ше замовлення клієнт отримує
- * 1 бал, за 2-ге — 2 бали, за 3-тє — 3, і так далі.
- * 1. Оголоси функцію getLoyaltyPoints з параметром orders
- *    (кількість замовлень клієнта).
- * 2. Створи змінну total зі значенням 0 (сума балів).
- * 3. Циклом for пройди номери замовлень від 1 до orders включно
- *    і додай кожен номер до total.
- * 4. Поверни total.
+ * Функція шукає перше число в проміжку від start до end,
+ * яке ділиться на 5 без залишку.
+ * 1. Оголоси функцію findMultiple з параметрами start і end.
+ * 2. Створи змінну number — сюди запишемо результат.
+ * 3. Циклом for пройди числа від start до end. Якщо чергове число
+ *    ділиться на 5 без залишку (i % 5 === 0) — збережи його в number
+ *    і перерви цикл оператором break.
+ * 4. Поверни number.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
-// Твій код тут
-function getLoyaltyPoints(orders) {
-  let total = 0;
-  for (let i = orders; i > 0; i -= 1) {
-    total += i;
+// твій код
+function findMultiple(start, end) {
+  let number;
+  let i;
+  for (i = start; i <= end; i += 1) {
+    if (i % 5 === 0) {
+      number = i;
+      break;
+    }
   }
-  return total;
+  return number;
 }
 
-console.log(getLoyaltyPoints(3)); // 6
-console.log(getLoyaltyPoints(5)); // 15
-console.log(getLoyaltyPoints(6)); // 0
+console.log(findMultiple(6, 17)); // 10
+console.log(findMultiple(17, 25)); // 20
+console.log(findMultiple(2, 11)); // 5
