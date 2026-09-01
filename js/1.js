@@ -1,21 +1,30 @@
 "use strict";
 
 /*
- * Дата народження зберігається у форматі "РРРР-ММ-ДД", наприклад "2024-03-15".
- * Рік — це перші чотири символи рядка.
- * 1. Оголоси функцію getBirthYearMessage з параметром birthDate.
- * 2. За допомогою slice() візьми рік — перші чотири символи birthDate —
- *    і збережи його у змінну year.
- * 3. Поверни рядок виду "You were born in <рік>".
+ * Функція рахує суму всіх цілих чисел від 1 до заданого числа включно.
+ * Наприклад, для 3 це 1 + 2 + 3 = 6.
+ * 1. Оголоси функцію sumUpTo з параметром number.
+ * 2. Створи змінну count зі значенням 1 (поточне число)
+ *    і змінну total зі значенням 0 (сума).
+ * 3. За допомогою while, поки count не більше за number:
+ *    - додай count до total;
+ *    - збільш count на 1.
+ * 4. Поверни total.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
-function getBirthYearMessage(birthDate) {
-  const year = birthDate.slice(0, 5);
-  return "You were born in " + year;
+
+function sumUpTo(number) {
+  let count = 1;
+  let total = 0;
+  while (count <= number) {
+    total = total + count;
+    count = count + 1;
+  }
+  return total;
 }
 
-console.log(getBirthYearMessage("2024-03-15")); // You were born in 2024
-console.log(getBirthYearMessage("1998-12-01")); // You were born in 1998
-console.log(getBirthYearMessage("2010-07-20")); // You were born in 2010
+console.log(sumUpTo(3)); // 6
+console.log(sumUpTo(5)); // 15
+console.log(sumUpTo(0)); // 0
