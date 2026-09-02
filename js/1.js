@@ -1,26 +1,46 @@
 "use strict";
 
 /*
- * Функція шукає перше число в діапазоні від start до end включно,
- * яке ділиться на divisor без остачі. Оператор break не використовуй.
- * 1. Оголоси функцію findDivisible з параметрами start, end і divisor.
- * 2. Циклом for пройди числа від start до end включно.
- * 3. Якщо чергове число ділиться на divisor без остачі (i % divisor === 0),
- *    одразу поверни його через return — це завершить і цикл, і функцію.
+ * Функція змінює розширення файлу.
+ * fileName — ім'я файлу з розширенням (наприклад "app.js"),
+ * ext — потрібне розширення (наприклад ".css").
+ * 1. Оголоси функцію changeFileExtension з параметрами fileName і ext.
+ * 2. Якщо fileName уже закінчується на ext — поверни fileName без змін.
+ * 3. Інакше заміни розширення на ext:
+ *    - циклом for знайди позицію крапки (символ ".") у fileName;
+ *    - через slice візьми частину рядка до крапки — це ім'я без розширення;
+ *    - додай до нього ext і поверни результат.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
 
-function findDivisible(start, end, divisor) {
-  let i;
-  for (i = start; i <= end; i += 1) {
-    if (i % divisor === 0) {
-      return i;
+/* function changeFileExtension(fileName, ext) {
+  if (fileName.endsWith(ext)) {
+    return fileName;
+  }
+  for (let i = fileName.length - 1; i >= 0; i -= 1) {
+    if (fileName[i] === ".") {
+      return fileName.slice(0, i) + ext;
     }
   }
 }
+  */
 
-console.log(findDivisible(2, 6, 5)); // 5
-console.log(findDivisible(8, 17, 3)); // 9
-console.log(findDivisible(16, 35, 7)); // 21
+function changeFileExtension(fileName, ext) {
+  if (fileName.endsWith(ext)) {
+    return fileName;
+  }
+
+  const dotIndex = fileName.lastIndexOf(".");
+
+  if (dotIndex === -1) {
+    return fileName + ext;
+  }
+
+  return fileName.slice(0, dotIndex) + ext;
+}
+
+console.log(changeFileExtension("app.css", ".js")); // app.js
+console.log(changeFileExtension("styles.css", ".css")); // styles.css
+console.log(changeFileExtension("index.js", ".html")); // index.html
