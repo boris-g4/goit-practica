@@ -1,46 +1,36 @@
 "use strict";
 
 /*
- * Функція змінює розширення файлу.
- * fileName — ім'я файлу з розширенням (наприклад "app.js"),
- * ext — потрібне розширення (наприклад ".css").
- * 1. Оголоси функцію changeFileExtension з параметрами fileName і ext.
- * 2. Якщо fileName уже закінчується на ext — поверни fileName без змін.
- * 3. Інакше заміни розширення на ext:
- *    - циклом for знайди позицію крапки (символ ".") у fileName;
- *    - через slice візьми частину рядка до крапки — це ім'я без розширення;
- *    - додай до нього ext і поверни результат.
+ * Магазин має партнерську програму: знижка залежить від того,
+ * скільки всього кредитів клієнт витратив за весь час.
+ * Окремо: VIP-клієнти одразу отримують найбільшу знижку.
+ * 1. Оголоси функцію getDiscount з двома параметрами:
+ *    totalSpent (сума витрат) і isVip (чи клієнт VIP).
+ * 2. За допомогою if...else if...else поверни знижку:
+ *    - якщо totalSpent 50000 і більше АБО клієнт VIP — 0.1 (золотий партнер);
+ *    - від 20000 до 50000 — 0.05 (срібний партнер);
+ *    - від 5000 до 20000 — 0.02 (бронзовий партнер);
+ *    - менше 5000 — 0 (базовий партнер).
+ *    Для першої умови поєднай два випадки через ||.
  * Виклики функції вже додані нижче — після написання перевір результат у консолі.
  */
 
 // Твій код тут
 
-/* function changeFileExtension(fileName, ext) {
-  if (fileName.endsWith(ext)) {
-    return fileName;
-  }
-  for (let i = fileName.length - 1; i >= 0; i -= 1) {
-    if (fileName[i] === ".") {
-      return fileName.slice(0, i) + ext;
-    }
+function getDiscount(totalSpent, isVip) {
+  if (totalSpent >= 50000 || isVip) {
+    return 0.1;
+  } else if (totalSpent >= 20000) {
+    return 0.05;
+  } else if (totalSpent >= 5000) {
+    return 0.02;
+  } else if (totalSpent < 5000) {
+    return 0;
   }
 }
-  */
 
-function changeFileExtension(fileName, ext) {
-  if (fileName.endsWith(ext)) {
-    return fileName;
-  }
-
-  const dotIndex = fileName.lastIndexOf(".");
-
-  if (dotIndex === -1) {
-    return fileName + ext;
-  }
-
-  return fileName.slice(0, dotIndex) + ext;
-}
-
-console.log(changeFileExtension("app.css", ".js")); // app.js
-console.log(changeFileExtension("styles.css", ".css")); // styles.css
-console.log(changeFileExtension("index.js", ".html")); // index.html
+console.log(getDiscount(137000, false)); // 0.1
+console.log(getDiscount(1300, true)); // 0.1
+console.log(getDiscount(46900, false)); // 0.05
+console.log(getDiscount(8250, false)); // 0.02
+console.log(getDiscount(1300, false)); // 0
