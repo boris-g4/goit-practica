@@ -1,22 +1,21 @@
 "use strict";
 
 /*
- * SmileCare тримає чергу записів на сьогодні — масив імен пацієнтів.
- * Функція checkQueue(queue) перевіряє її через довжину масиву.
- * 1. Оголоси функцію checkQueue(queue).
- * 2. Якщо queue.length === 0 — поверни 'Записів немає'.
- * 3. Інакше — поверни рядок 'Записів у черзі: N', де N — кількість записів.
+ * Sunny Coffee показує позиції замовлення одним рядком у чеку,
+ * а в дужках — їхню кількість.
+ * Функція buildReceiptLine(order) приймає масив назв напоїв.
+ * 1. Оголоси функцію buildReceiptLine(order).
+ * 2. З'єднай назви напоїв у рядок методом join() з роздільником ', '.
+ * 3. Поверни рядок виду `Latte, Espresso, Cappuccino (3)` — склеєні напої,
+ *    а в дужках кількість позицій (order.length).
  */
 
 // Твій код тут
-function checkQueue(queue) {
-  if (queue.length === 0) {
-    return "Записів немає";
-  } else {
-    return `Записів у черзі: ${queue.length}`;
-  }
+
+function buildReceiptLine(order) {
+  return `${order.join(", ")} (${order.length})`;
 }
-console.log(checkQueue(["Alex", "Sam", "Kim"])); // Записів у черзі: 3
-console.log(checkQueue(["Max"])); // Записів у черзі: 1
-console.log(checkQueue([])); // Записів немає
-console.log(checkQueue(["Alex", "Sam", "Kim", "Max", "Lee"])); // Записів у черзі: 5
+
+console.log(buildReceiptLine(["Latte", "Espresso", "Cappuccino"])); // Latte, Espresso, Cappuccino (3)
+console.log(buildReceiptLine(["Americano", "Raf"])); // Americano, Raf (2)
+console.log(buildReceiptLine(["Mocha"])); // Mocha (1)
